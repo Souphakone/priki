@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use  App\Http\Controllers;
+use  App\Http\Controllers\HomeController;
+use  App\Http\Controllers\DomainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +16,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/role', function () {
     return view('home');
-});
+});*/
+
+//HomeController
+Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/{id}', [HomeController::class, 'show'])->name('test');
+
+//Domain
+Route::get('/domain/{id}', [DomainController::class, 'index'])->name('domain');
+//$url = route(name('domain', ['id' => 1]));
