@@ -25,9 +25,9 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($day)
+    public function show($day = 5)
     {
-        
+
         Carbon::setLocale('fr');
         $publicationState = PublicationState::where('slug', 'PUB')->first()
             ->practices()->where('updated_at', '>=', Carbon::now()->subDays($day))->get();
