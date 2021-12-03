@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Domain;
 use Illuminate\Http\Request;
 use App\Models\Practice;
+use Illuminate\Support\Facades\Session;
 
 class DomainController extends Controller
 {
@@ -16,6 +17,7 @@ class DomainController extends Controller
 
     public function showById($id)
     {
+        Session::put('domainId', $id);
         $practices = Practice::all()->where('domain_id', '=', $id);
         return view('domain.domain', ['practices' => $practices]);
     }
