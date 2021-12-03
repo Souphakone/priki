@@ -10,12 +10,13 @@ class DomainController extends Controller
 {
     public function index()
     {
-        $test = 'Test';
-        return view('domain.home', ['test' => $test]);
+        $practices = Practice::orderBy('domain_id')->get();
+        return view('domain.home', ['practices' => $practices]);
     }
 
     public function showById($id)
     {
-        return view('domain.domain');
+        $practices = Practice::all()->where('domain_id', '=', $id);
+        return view('domain.domain', ['practices' => $practices]);
     }
 }
