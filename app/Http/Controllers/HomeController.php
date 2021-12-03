@@ -16,21 +16,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $publicationState = PublicationState::where('slug', 'PUB')->first();
+        $publicationState = PublicationState::where('slug', 'PUB')->first(); //ToDo model
         return (view('welcome', with(['publicationState' => $publicationState->practices])));
     }
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $day
      * @return \Illuminate\Http\Response
      */
-    public function show($day = 5)
+    public function show($day)
     {
-
         Carbon::setLocale('fr');
-        $publicationState = PublicationState::where('slug', 'PUB')->first()
-            ->practices()->where('updated_at', '>=', Carbon::now()->subDays($day))->get();
+        $publicationState = Practice::practicesGetByModifiedDate($day);
         return (view('welcome', with(['publicationState' => $publicationState, 'day' => $day],)));
     }
 }

@@ -27,8 +27,10 @@ Route::get('/role', function () {
 //HomeController
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/{id}', [HomeController::class, 'show'])->name('test');
 
 //Domain
-Route::get('/domain/{id}', [DomainController::class, 'index'])->name('domain');
-//$url = route(name('domain', ['id' => 1]));
+Route::get('/domain/', [DomainController::class, 'index']);
+Route::get('/domain/{id}', [DomainController::class, 'showById'])->name('domain');
+
+
+Route::get('/{id}', [HomeController::class, 'show']);
