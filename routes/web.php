@@ -18,8 +18,6 @@ use  App\Http\Controllers\DomainController;
 //HomeController
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/{id}', [HomeController::class, 'show'])->name('test');
-
 //Domain
 Route::get('/domain/{id}', [DomainController::class, 'index'])->name('domain');
 
@@ -28,3 +26,5 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
+
+Route::get('/{id}', [HomeController::class, 'show'])->name('test');

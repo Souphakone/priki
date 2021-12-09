@@ -9,4 +9,9 @@ class Role extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
+    static function getRole()
+    {
+        return Role::where('slug', 'MBR')->first();
+    }
 }
