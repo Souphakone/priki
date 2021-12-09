@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use  App\Http\Controllers;
 use  App\Http\Controllers\HomeController;
 use  App\Http\Controllers\DomainController;
 
@@ -16,14 +15,6 @@ use  App\Http\Controllers\DomainController;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/role', function () {
-    return view('home');
-});*/
-
 //HomeController
 Route::get('/', [HomeController::class, 'index']);
 
@@ -31,4 +22,9 @@ Route::get('/{id}', [HomeController::class, 'show'])->name('test');
 
 //Domain
 Route::get('/domain/{id}', [DomainController::class, 'index'])->name('domain');
-//$url = route(name('domain', ['id' => 1]));
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';
