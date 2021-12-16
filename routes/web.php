@@ -18,6 +18,7 @@ use  App\Http\Controllers\DomainController;
 //HomeController
 Route::get('/', [HomeController::class, 'index']);
 
+<<<<<<< HEAD
 //Domain
 Route::get('/domain/{id}', [DomainController::class, 'index'])->name('domain');
 
@@ -28,3 +29,12 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/auth.php';
 
 Route::get('/{id}', [HomeController::class, 'show'])->name('test');
+=======
+
+//Domain
+Route::get('/domain/', [DomainController::class, 'index']);
+Route::get('/domain/{id}', [DomainController::class, 'showById'])->name('domain');
+
+
+Route::get('/{id}', [HomeController::class, 'show']);
+>>>>>>> feature/DomainList
