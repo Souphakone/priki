@@ -19,6 +19,7 @@ class DomainController extends Controller
     {
         Session::put('domainId', $id);
         $practices = Practice::all()->where('domain_id', '=', $id); //Todo Model
-        return view('domain.domain', ['practices' => $practices]);
+        $domainName = Domain::find($id)->name;
+        return view('domain.domain', ['practices' => $practices, 'domainName' => $domainName]);
     }
 }
